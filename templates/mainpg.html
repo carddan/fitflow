@@ -1,0 +1,31 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <a href="{% url 'mainpg' %}"></a>
+</head>
+<body>
+    <h1>Welcome, {{ user.firstname }}!</h1>
+    <div class="circle">
+        <span class="day">{{ days_since_last_period }}</span>
+    </div>
+    <p class="phase-name">{{ cycle_phase.name }}</p>
+
+    <h2>Recommended Workouts:</h2>
+    <ul>
+        {% for workout in workouts %}
+            <li>
+                <strong>{{ workout.name }}</strong><br>
+                Description: {{ workout.description }}<br>
+                Intensity: {{ workout.intensity }}<br>
+                Duration: {{ workout.duration }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add additional content or elements here -->
+</body>
+</html>

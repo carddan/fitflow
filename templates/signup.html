@@ -1,0 +1,86 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FitFlow - Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <!--flatpickr-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body class="page-background">
+    <div class = "container">
+    <form class="form" action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+      <h1 class="form_title">Create Account</h1>
+      <div class="form_input_group">
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+          <div class="error-message" style="color: #c22929; margin-bottom: 10px;; text-align: center;">
+            {{ message }}
+          </div>
+        {% endif %}
+        {% endfor %}
+        <input type="text" name= "firstname" class = "form_input" autofocus placeholder="First Name" required>
+      </div>
+      <div class="form_input_group">
+              <input type="text" name= "username" class = "form_input" placeholder="Username" required>
+            </div>
+      <div class="form_input_group">
+        <input type="email" name="email" class = "form_input" autofocus placeholder="Email" required>
+      </div>
+      <div class="form_input_group">
+        <input type="password" name="password1" class = "form_input" autofocus placeholder="Password" required>
+      </div>
+      <div class="form_input_group">
+        <input type="password" name ="password2" class = "form_input" autofocus placeholder="Confirm Password" required>
+      </div>
+      <div class="form_input_group">
+        <div class="custom_select">
+          <select id="ageRange" name="ageRange" required>
+            <option value="">Age Range</option>
+            <option value="1">under 18</option>
+            <option value="2">18-29</option>
+            <option value="3">30-39</option>
+            <option value="4">40-49</option>
+            <option value="5">50+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form_input_group">
+        <input type="text" class="custom-lastPeriod" id="lastPeriod" name="lastPeriod" autofocus placeholder="First Day of Last Period" required>
+      </div>
+      <div class="form_input_group">
+        <div class="custom_select">
+          <select id="exercisePurpose" class="exercisePurpose" name="exercisePurpose" required>
+            <option value="">Exercise Purpose</option>
+            <option value="loseWeight">Lose Weight</option>
+            <option value="buildMuscle">Build Muscle</option>
+            <option value="stayActive">Stay Active</option>
+          </select>
+        </div>
+      </div>
+      <div class="form_button_container">
+        <button class ="form_button" type="submit">Sign Up</button>
+      </div>
+      <p class="form_text">
+        <a href="{% url 'login' %}">Already have an account? Log in</a>
+      </p>
+
+    </form>
+  </div>
+
+  <!--Bootsrap JS
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrate ></script>-->
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#lastPeriod", {
+      
+    });
+  </script>
+  <script src="{% static 'script2.js' %}"></script>
+</body>
+</html>

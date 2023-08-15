@@ -1,0 +1,206 @@
+body {
+    background-color: #e5d2c0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color:rgb(8, 8, 8);
+    --color-error: #c22929;
+    --border-radius: 4px;
+  
+  }
+  
+  body.page-background {
+    background: url("leaves.jpeg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  /*h1#fitflow {
+    text-align: center;
+    font-size: 50px;
+    color:#FDF5E6;
+  }*/
+  
+  h2#cycle {
+    margin: 20px;
+    color:#FDF5E6;
+    text-align: center;
+  }
+  
+  p {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  
+  /* code for sign up form */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    width: 400px;
+    max-width: 400px;
+    margin: 1 rem;
+    padding: 2 rem;
+    background-color: rgba(145, 179, 132, 0.5);
+    box-shadow: 0 0 40px rgba (0,0,0,0.2);
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #f7f5f4;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #f7f5f4;
+  
+  }
+  
+  .form_button_container {
+    width: 50%;
+  }
+  
+  .form_button {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: rgba(145, 179, 132, 0.8);
+  }
+  
+  .form_button:hover {
+    background-color: rgba(105, 127, 96, 0.8);
+  }
+  
+  .form_button:active {
+    transform: scale(0.98);
+  }
+  
+  .form > *:first-child {
+    margin-top: 8px;
+  }
+  
+  .form > *:last-child {
+    margin-bottom: 8px;
+  }
+  
+  .form_message_error {
+    color: var(--color-error);
+  }
+  
+  .form_input_group {
+    margin-bottom: 1rem;
+  }
+  
+  .form_input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #cecccc;
+    outline: none;
+    background: #dfdada;
+    transition: background 0.2s, border-color 0.2s;
+    
+  }
+  
+  .form_input:focus {
+    border-color: #465640;
+    background: #ffffff;
+  }
+  
+  .form_input_error {
+    color: var(--color-error);
+    border-color: var(--color-error);
+  }
+  
+  .form_input_error_message {
+    margin-top: 0.5rem;
+    font-size:0.85rem;
+    color: var(--color-error);
+  }
+  
+  .custom-lastPeriod {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #cecccc;
+    outline: none;
+    background: #dfdada;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  
+  .custom_select select{
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #cecccc;
+    outline: none;
+    background: #dfdada;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  
+  .custom_input {
+    margin-bottom: .75rem;
+  }
+  
+  .custom_select select:focus {
+    border-color: #465640;
+    background: #ffffff;
+  }
+    
+    
+  /*Design for main pg */
+  
+  /* Define the circle styles */
+  .circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  /* Define the styles for each menstrual phase */
+  .menstrual-phase-1 {
+    background-color: #6ab04c; /* Example color for phase 1 */
+  }
+  
+  .menstrual-phase-2 {
+    background-color: #66cc99; /* Example color for phase 2 */
+  }
+  
+  /* Add styles for other phases as needed */
+  
+  /* Define styles for phase name and description */
+  .phase-name {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .phase-description {
+    font-size: 16px;
+  }
+  

@@ -1,0 +1,28 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FitFlow - Forgot Password</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body class="page-background">
+    <div class="container">
+        <form class ="form" action= "{% url 'forgotp' %}" method="POST">
+            {% csrf_token %}
+            <h1 class="form_title">Forgot Password</h1>
+            <div class="form_message_error"></div>
+            <div class="form_input_group">
+                <input type="text" class="form_input" autofocus placeholder="Email">
+            </div>
+            <div class="form_button_container">
+                <button class="form_button" type="submit">Reset Password</button>
+            </div>
+            <p class="form_text">
+                <a href="login.html">Remembered your password? Log in</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
