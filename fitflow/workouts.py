@@ -54,10 +54,10 @@ def create_workouts():
         description = "Your energy is at a low. Go on a walk and focus on your breathing and happy thoughts.",
         intensity = "Low",
         duration = "45 minutes",
+        cycle_phase_id=menstrual_phase.id
     )
     workout.save()
-    workout.cycle_phase.set([menstrual_phase])
-    workouts.append(workout)
+
 
 
     workout = Workout(
@@ -65,26 +65,27 @@ def create_workouts():
         description = 'In a pool or the ocean, your choice. This is a simple, full body workout ',
         intensity = 'Moderate',
         duration = '30 minutes',
+        cycle_phase_id=luteal_phase.id
     )
     workout.save()
-    workout.cycle_phase.set([luteal_phase])
-    workouts.append(workout)
+   
 
     workout = Workout(
         name = 'Biking',
         description = 'Be like Frank Ocean and go for a bike ride. ',
         intensity = 'Moderate',
         duration = '45 minutes',
+        cycle_phase_id=follicular_phase.id
     )
     workout.save()
-    workout.cycle_phase.set([follicular_phase, luteal_phase])
-    workouts.append(workout)
+
 
     workout = Workout(
         name = 'Stairmaster',
         description = 'Ready to feel the burn? Get on that stairmaster and strengthn your quads, glutes, and core',
         intensity = 'High',
         duration = '30 minutes',
+        cycle_phase_id=ovulatory_day.id
     )
     workout.save()
     workout.cycle_phase.set([follicular_phase, ovulatory_day])
@@ -95,10 +96,10 @@ def create_workouts():
         description = 'Get on a treadmill and set it at 12% incline 3mph. ',
         intensity = 'Moderate',
         duration = '30 minutes',
+        cycle_phase_id=luteal_phase.id
     )
     workout.save()
-    workout.cycle_phase.set([follicular_phase, luteal_phase, menstrual_phase])
-    workouts.append(workout)
+
     
 
     print(workouts)

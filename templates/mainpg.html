@@ -9,9 +9,21 @@
 </head>
 <body>
     <h1>Welcome, {{ user.firstname }}!</h1>
-    <div class="circle">
-        <span class="day">{{ days_since_last_period }}</span>
-    </div>
+    <p>You're currently in the: {{cycle_phase}} Phase</p>
+
+
+    {% if recommended_workouts %}
+        <div class ="workouts-container">
+        {% for workout in recommended_workouts %}
+            <div class="workout-card">
+                <h2 class="workout-name">{{workout.name}}</h2>
+                <p class="workout-info"><strong>Description:</strong></p>
+                <p class="workout-info">{{ workout.description }}</p>
+                <p class="workout-info"><strong>Intensity:</strong></p>
+                <p class="workout-info">{{workout.intensity}}</p>
+                <p class="workout-info"><strong>Duration:</strong></p>
+                <p class="workout-info">{{workout.duration}}</p>
+            </div>
     <p class="phase-name">{{ cycle_phase.name }}</p>
 
     <h2>Recommended Workouts:</h2>
@@ -24,7 +36,10 @@
                 Duration: {{ workout.duration }}
             </li>
         {% endfor %}
-    </ul>
+        </div>
+    {% else %}
+        <p>No recommended workouts available.</p>
+    {% endif %}
 
     <!-- Add additional content or elements here -->
 </body>

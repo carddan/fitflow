@@ -117,21 +117,16 @@ def mainpg(request):
     elif not is_first_time_user:
         cycle_phase, recommended_workouts = cached_results
     else: 
-        cycle_phase = [user.cycle_phase]
-        print('cycle phase')
-        print(cycle_phase)
-        intensity = 'Moderate'
-        recommended_workouts = get_filtered_workouts(user, cycle_phase, intensity)
-        print('recommended workouts')
-        print(recommended_workouts)
-    # Pass the filtered workouts to the main page template
-    context = {
-        'workouts': recommended_workouts,
-        'menstrual_phase': user.cycle_phase,
-    }
+        cycle_phase=user.cycle_phase
+        recommended_workouts = get_filtered_workouts(user)
+        print('recommended workouts', recommended_workouts)
+        print(recommended_workouts.values())
 
-    return render(request, 'mainpg.html', context)
-
+    return render(request, 'mainpg.html', {
+        'cycle_phase': cycle_phase,
+        'recommended_workouts' : recommended_workouts
+    })
+        
     
 
 

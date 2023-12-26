@@ -3,7 +3,8 @@ from datetime import datetime
 from ..workouts import create_workouts
 import pickle
 import json
-from django.db.models import Count
+
+
 
 
 
@@ -110,7 +111,9 @@ def get_fertility_window(user):
     return range(fertility_window_start +1, fertility_window_end)
 
 
-
+def get_filtered_workouts(cycle_phase, intensity):
+    
+    return Workout.objects.filter(cycle_phase__in=[cycle_phase], intensity__in=[intensity])
 
 
 def get_cycle_phase(user):
@@ -129,19 +132,6 @@ def get_cycle_phase(user):
     user.cycle_phase = cycle_phase
     return cycle_phase
 
-
-def get_filtered_workouts(user, for_phases=None, intensity=None):
-
-    workouts = Workout.objects.filter(user=user)
-    if for_phases:
-        cycle_phase_pks = CyclePhase.objects.filter(name__in=for_phases).values_list('pk', flat=True)
-        workouts = workouts.filter(cycle_phase__in=cycle_phase_pks)
-
-    if intensity:
-        workouts = workouts.filter(intensity=intensity)
-    print('Filtered workouts:', workouts.count())
-
-    return workouts
 
 
 
