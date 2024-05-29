@@ -4,8 +4,7 @@ from datetime import date, timedelta, datetime
 from ..models import FitUser, CyclePhase
 from celery import shared_task
 from django.core.cache import cache
-#from ..workouts import create_workouts
-#from ..constants import cycle_phase_mapping 
+from ..workouts import create_workouts
 
 
 #for new users and returning users
@@ -67,16 +66,14 @@ def up_to_date(user_id):
         user.save()
         #get user's cycle phase
         cycle_phase = [user.cycle_phase]
-        fitness_goals = user.exercise_purpose.all()
         #create_workouts()
-        recommended_workouts = get_filtered_workouts(user, cycle_phase, for_goals=fitness_goals)
+        recommended_workouts = get_filtered_workouts(user, cycle_phase)
         user.save()
     else:
         cycle_phase = [user.cycle_phase]
         #get user's recommended workouts
-        fitness_goals = user.exercise_purpose.all()
         #create_workouts()
-        recommended_workouts = get_filtered_workouts(user, cycle_phase, for_goals=fitness_goals)
+        recommended_workouts = get_filtered_workouts(user, cycle_phase)
         user.save()
     
     return cycle_phase, recommended_workouts

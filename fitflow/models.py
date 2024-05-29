@@ -58,6 +58,7 @@ class FitUser(AbstractUser, PermissionsMixin):
     REQUIRED_FIELDS = ['username']
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    activation_link_sent_at = models.DateTimeField(null=True, blank=True)
 
 
     #FIELDS RELATED TO MENSTRUAL CYCLE
@@ -129,12 +130,11 @@ class FitUserManager(BaseUserManager):
 
 
 class Workout(models.Model):
-    user = models.ForeignKey(FitUser, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=100)
     description = models.TextField()
     intensity = models.CharField(max_length=20)
     duration = models.CharField(max_length=20)
-    cycle_phase = models.ManyToManyField(CyclePhase)
+    cycle_phase = models.ForeignKey('CyclePhase', on_delete=models.CASCADE)
     #for_goals = models.IntegerField()
     def __str__(self):
         return self.name

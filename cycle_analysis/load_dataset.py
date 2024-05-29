@@ -90,10 +90,12 @@ print(target_data_df)
 '''
 
 filtered_data.drop(columns = ['Cycle Length 4', 'Luteal Phase Length 4'], inplace=True)
+
 '''
 print("Filtered Data:")
 print(filtered_data)
 '''
+
 encoder = LabelEncoder()
 filtered_data['ClientID'] = encoder.fit_transform(filtered_data['ClientID'])
 

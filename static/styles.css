@@ -169,6 +169,13 @@ body {
     background: #ffffff;
   }
     
+  .container {
+    width: 80%;
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
     
   /*Design for main pg */
   

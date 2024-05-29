@@ -17,4 +17,4 @@ Since this is a protoype app, there is room for improvement and personalization 
 
 # Known Issues
 
-The main page after you create an account and log in is still under aesthetic development, and there is no two step verification for accounts. 
+The main page after you create an account and log in is still under aesthetic development. 

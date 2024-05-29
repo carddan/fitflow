@@ -3,8 +3,7 @@ from datetime import datetime
 from ..workouts import create_workouts
 import pickle
 import json
-
-
+import random
 
 
 
@@ -111,11 +110,6 @@ def get_fertility_window(user):
     return range(fertility_window_start +1, fertility_window_end)
 
 
-def get_filtered_workouts(cycle_phase, intensity):
-    
-    return Workout.objects.filter(cycle_phase__in=[cycle_phase], intensity__in=[intensity])
-
-
 def get_cycle_phase(user):
     days_since_last_period = get_days_since_last_period(user.last_period)
     
@@ -131,6 +125,28 @@ def get_cycle_phase(user):
     cycle_phase, created = CyclePhase.objects.get_or_create(name= cycle_phase)
     user.cycle_phase = cycle_phase
     return cycle_phase
+
+
+def get_filtered_workouts(user):
+    print(user.cycle_phase)
+    # Filter workouts based on the user's cycle phase
+    filtered_workouts = Workout.objects.filter(cycle_phase__exact=user.cycle_phase)
+
+    # Get the count of filtered workouts
+    count = filtered_workouts.count()
+
+    # If there are less than 3 workouts available, return all of them
+    if count <= 3:
+        return filtered_workouts
+
+    # Otherwise, select 3 random workouts
+    random_workouts = random.sample(list(filtered_workouts), 3)
+    
+    return random_workouts
+
+
+
+
 
 
 

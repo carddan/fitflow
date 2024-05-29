@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-gqsg%@a&4jm!2xo2d7vjy1(n%43$!sbfzbng^17@(2qe2moj98
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'www.fit-flows.com']
 
 
 # Application definition
@@ -72,13 +72,33 @@ CACHES = {
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fitflow',
     'celery',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+SITE_ID = 1
+#ACCOUNT_EMAIL_VERIFICATION = 'none'
+#ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'login'
+#ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2/24
+
+# Emailing settings
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'fitflow1.info@gmail.com'
+EMAIL_HOST_USER = 'fitflow1.info@gmail.com'
+EMAIL_HOST_PASSWORD = 'ugag shai wect huul'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,6 +108,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'dc.urls'
@@ -116,8 +137,12 @@ WSGI_APPLICATION = 'dc.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fitflow_db',
+        'USER': 'root',
+        'PASSWORD': 'danIxyz2521',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -167,3 +192,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '..','collected_static')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
