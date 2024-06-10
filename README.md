@@ -2,6 +2,17 @@
 This is a summer side project django menstrual tracking app that gives workout recommendations based off fitness goals and cycle phase. This prototype app, called fitflow, uses machine learning, flatpickr calendar, custom user authentication, etc.
 Note that code is in master branch!
 
+![Welcome Page](./images/fitflow_welcome.png)
+
+
+![Signup Page](./images/fitflow_signup.png)
+
+![Email after signing up](./images/fitflow_email.png)
+
+
+![Login Page](./images/fitflow_login.png)
+
+
 
 # How to Use This App Yourself!
 
